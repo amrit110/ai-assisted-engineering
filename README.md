@@ -1,4 +1,4 @@
-AI assisted Engineering blog
+AI Assisted Engineering blog
 ============================
 
 Welcome to my blog on AI Assisted Software Engineering. The blog template is based on the
