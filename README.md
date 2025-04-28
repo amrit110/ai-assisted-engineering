@@ -1,8 +1,7 @@
-AI Engineering blog template
-===============================
+AI assisted Engineering blog
+============================
 
-Welcome to the AI Engineering blog template! This template is designed to help you
-write blog posts for AI Engineering projects. It is based on the
+Welcome to my blog on AI Assisted Software Engineering. The blog template is based on the
 [Distill.pub](https://distill.pub) format, which is a great way to write articles
 that are both beautiful and interactive. Some helpful links to provide context on
 writing great distill articles are provided below:
@@ -17,13 +16,13 @@ How to set up for local editing:
 ### Clone repo
 
 ```bash
-    git@github.com:VectorInstitute/aieng-template-blog.git
+    git@github.com:amrit110/ai-assisted-engineering.git
 ```
 
 ### Install node dependencies
 
 ```bash
-    cd aieng-template-blog
+    cd ai-assisted-engineering
     npm install
 ```
 
