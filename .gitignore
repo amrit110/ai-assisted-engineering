@@ -61,6 +61,3 @@ typings/
 .next
 
 .DS_Store
-
-# production build produces unnecessary js file
-public

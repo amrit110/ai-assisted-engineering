@@ -22,19 +22,19 @@
 
 <d-front-matter>
   <script type="text/json">{
-  "title": "AI Engineering blog post",
-  "description": "Sample blog post for AI Engineering",
+  "title": "AI Assisted Engineering",
+  "description": "A blog post about AI assisted engineering",
   "authors": [
     {
-      "author": "John Doe",
-      "authorURL": "https://john.doe",
+      "author": "Amrit Krishnan",
+      "authorURL": "https://github.com/amrit110",
       "affiliation": "Vector Institute",
       "affiliationURL": "https://vectorinstitute.ai"
     }, {
-      "author": "Jane Doe",
-      "authorURL": "http://www.jane.doe",
-      "affiliation": "Vector Institute",
-      "affiliationURL": "https://vectorinstitute.ai"
+      "author": "",
+      "authorURL": "",
+      "affiliation": "",
+      "affiliationURL": ""
     }
   ],
   "katex": {
@@ -47,9 +47,9 @@
 </d-front-matter>
 
 <d-title>
-  <h1>AI Engineering blog post</h1>
+  <h1>AI Assisted Engineering</h1>
   <p>
-    Blog posts are a great way to share your ideas with the world. They can be used to showcase our work, especially important results to the broader community.
+    Software engineering is undergoing a transformation with the advent of AI-assisted tools. This blog explores the evolution of these tools, from simple code completion to sophisticated agentic assistants that can reason about and modify entire codebases.
   </p>
 </d-title>
 
@@ -59,154 +59,64 @@
   <d-contents>
     <nav class="toc figcaption">
       <h4>Table of Contents</h4>
-      <div class="toc-section"><a href="#overview">An overview of the cool AI Engineering project!</a>
-        <ul>
-          <li><a href="#methods">Methods</a></li>
-          <li><a href="#results">Results</a></li>
-        </ul>
-      </div>
-      <div class="toc-section"><a href="#visualization">Visualizations</a>
-        <ul>
-          <li><a href="#visualization">Full-Width Image Example</a></li>
-          <li><a href="#full-width-demo">Full-Width Interactive Visualization</a></li>
-          <li><a href="#neural-network-viz">Regular Width Interactive Visualization</a></li>
-        </ul>
-      </div>
-      <div class="toc-section"><a href="#conclusion">Conclusion: How did the project create impact?</a></div>
+      <div class="toc-section"><a href="#introduction">Introduction</a></div>
+      <div class="toc-section"><a href="#language-server-protocols">Language Server Protocols</a></div>
+      <div class="toc-section"><a href="#github-copilot">GitHub Copilot</a></div>
+      <div class="toc-section"><a href="#agentic-coding-assistants">Agentic Coding Assistants</a></div>
+      <div class="toc-section"><a href="#conclusion">Conclusion</a></div>
     </nav>
     <div class="toc-line"></div>
   </d-contents>
 
-  <h2 id="overview">An overview of the cool AI Engineering project!!</h2>
+  <h2 id="introduction">Introduction</h2>
 
-  <p>Explanations of the approaches! <d-cite key="rumelhart1986learning"/></p>
+  <p>AI-assisted software engineering represents a significant paradigm shift in how developers write, test, and maintain code. This blog explores the evolution of AI tools in the software development ecosystem, from simple code completions to sophisticated agentic assistants that can reason about and modify entire codebases. <d-cite key="rumelhart1986learning"/></p>
 
-  <h3 id="methods">Methods</h3>
+  <h2 id="language-server-protocols">Language Server Protocols</h2>
 
-  <p>Details on the methods used in the project</p>
+  <p>Language Server Protocols (LSPs) provide the foundation for many modern AI coding tools by standardizing how programming language tooling communicates with code editors and IDEs. This standard interface has enabled the development of sophisticated AI-powered features that work across multiple development environments.</p>
 
-  <h3 id="results">Results</h3>
-
-  <p>Key findings and results from our experiments and analysis</p>
-
-  <!-- Full width image example -->
-  <figure class="l-screen" style="width: 100%; margin: 20px 0; padding: 0;" id="visualization">
-    <h2 style="text-align: center;">Full-Width Image Example</h2>
-    <!-- Create a placeholder full-width image with gradient background -->
-    <div style="width: 100%; height: 300px; background: linear-gradient(90deg, #134e5e 0%, #71b280 100%); display: flex; justify-content: center; align-items: center; color: white; font-size: 24px; letter-spacing: 2px;">
-      FULL WIDTH IMAGE EXAMPLE
-    </div>
-    <figcaption style="margin-top: 20px; text-align: left; max-width: 800px; margin-left: auto; margin-right: auto;">
-      <p>This image takes up the full width of the screen. This approach is perfect for large diagrams, hero images, or any visual element that benefits from maximum horizontal space.</p>
-    </figcaption>
-  </figure>
-  
-  <!-- Regular width image example -->
-  <h2 style="text-align: center;">Regular Width Image</h2>
   <figure style="text-align: center; margin: 30px auto;">
-    <!-- Create a placeholder regular-width image with different gradient background -->
-    <div style="width: 100%; max-width: 600px; height: 250px; margin: 0 auto; background: linear-gradient(45deg, #3a6186 0%, #89253e 100%); display: flex; justify-content: center; align-items: center; color: white; font-size: 24px; letter-spacing: 2px;">
-      REGULAR WIDTH IMAGE
-    </div>
+    <img src="./diagrams/agents.webp" alt="Language Server Protocol Architecture" style="width: 100%; max-width: 600px; margin: 0 auto;">
     <figcaption style="margin-top: 10px; text-align: center; max-width: 600px; margin-left: auto; margin-right: auto;">
-      <p>This image uses the standard width of the content area. It's suitable for most images that don't require extra horizontal space.</p>
-    </figcaption>
-  </figure>
-  
-  <!-- Full Screen Visualization using exact Distill structure -->
-  <hr style="grid-column: screen; margin-top: 50px; margin-bottom: 50px;">
-  
-  <h2 id="full-width-demo">Full-Width Interactive Visualization</h2>
-  
-  <p>This example demonstrates a visualization that spans the full width of the screen, using the proper Distill template structure.</p>
-  
-  <figure class="l-screen" style="width: 100%; margin: 0; padding: 0;">
-    <!-- Simple interactive visualization with simplified direct approach -->
-    <div style="width: 100%; height: 400px; background-color: #f0f0f0; display: flex; flex-direction: column; justify-content: center; align-items: center; overflow: hidden;" id="interactive-vis">
-      <div style="position: relative; width: 100%; height: 300px; max-width: 1200px; margin: 0 auto; display: flex; justify-content: center; align-items: center; overflow: hidden;">
-        <!-- The slider container -->
-        <div id="carousel-container" style="width: 100%; height: 100%; position: relative; overflow: hidden;">
-          <!-- The slider -->
-          <div id="carousel-slider" style="display: flex; position: absolute; left: 0; transition: left 0.3s ease;">
-            <div class="carousel-item" style="flex: 0 0 auto; width: 200px; height: 200px; margin: 0 10px; background-color: #ef5350; border-radius: 8px; display: flex; justify-content: center; align-items: center; color: white; font-weight: bold; cursor: pointer;">Concept 1</div>
-            <div class="carousel-item" style="flex: 0 0 auto; width: 200px; height: 200px; margin: 0 10px; background-color: #42a5f5; border-radius: 8px; display: flex; justify-content: center; align-items: center; color: white; font-weight: bold; cursor: pointer;">Concept 2</div>
-            <div class="carousel-item" style="flex: 0 0 auto; width: 200px; height: 200px; margin: 0 10px; background-color: #66bb6a; border-radius: 8px; display: flex; justify-content: center; align-items: center; color: white; font-weight: bold; cursor: pointer;">Concept 3</div>
-            <div class="carousel-item" style="flex: 0 0 auto; width: 200px; height: 200px; margin: 0 10px; background-color: #ffca28; border-radius: 8px; display: flex; justify-content: center; align-items: center; color: white; font-weight: bold; cursor: pointer;">Concept 4</div>
-            <div class="carousel-item" style="flex: 0 0 auto; width: 200px; height: 200px; margin: 0 10px; background-color: #7e57c2; border-radius: 8px; display: flex; justify-content: center; align-items: center; color: white; font-weight: bold; cursor: pointer;">Concept 5</div>
-            <div class="carousel-item" style="flex: 0 0 auto; width: 200px; height: 200px; margin: 0 10px; background-color: #ec407a; border-radius: 8px; display: flex; justify-content: center; align-items: center; color: white; font-weight: bold; cursor: pointer;">Concept 6</div>
-            <div class="carousel-item" style="flex: 0 0 auto; width: 200px; height: 200px; margin: 0 10px; background-color: #ffa726; border-radius: 8px; display: flex; justify-content: center; align-items: center; color: white; font-weight: bold; cursor: pointer;">Concept 7</div>
-          </div>
-        </div>
-      </div>
-      <div style="margin-top: 20px; display: flex; gap: 10px;">
-        <button id="carousel-prev" style="padding: 8px 16px; background-color: #2196f3; color: white; border: none; border-radius: 4px; cursor: pointer; transition: opacity 0.3s;">← Previous</button>
-        <span id="carousel-indicator" style="padding: 8px 16px; font-weight: bold;"></span>
-        <button id="carousel-next" style="padding: 8px 16px; background-color: #2196f3; color: white; border: none; border-radius: 4px; cursor: pointer; transition: opacity 0.3s;">Next →</button>
-      </div>
-    </div>
-    
-    <figcaption style="margin-top: 20px; text-align: left; max-width: 800px; margin-left: auto; margin-right: auto;">
-      <p>This interactive visualization spans the full width of the screen, demonstrating how to create edge-to-edge content with interactive elements. The carousel above lets users navigate through different concepts, which could represent neuron activations, data visualizations, or any other interactive content.</p>
-    </figcaption>
-  </figure>
-  
-  <!-- Regular Width Neural Network Visualization -->
-  <h2 id="neural-network-viz" style="text-align: center;">Regular Width Interactive Visualization</h2>
-  <figure style="margin: 30px auto; max-width: 800px;">
-    <!-- Neural network visualization with regular width -->
-    <div id="neural-network-viz" style="width: 100%; height: 300px; background-color: #e8f4fa; display: flex; justify-content: center; align-items: center; padding: 20px; overflow: hidden; border-radius: 8px; border: 1px solid #d0e6f5;">
-      <!-- Input layer -->
-      <div class="network-layer" style="display: flex; flex-direction: column; align-items: center;">
-        <div style="font-weight: bold; margin-bottom: 10px;">Input</div>
-        <div style="display: flex; flex-direction: column; gap: 15px;">
-          <div class="neuron" style="width: 40px; height: 40px; border-radius: 50%; background-color: #ccc; transition: all 0.3s ease;"></div>
-          <div class="neuron" style="width: 40px; height: 40px; border-radius: 50%; background-color: #ccc; transition: all 0.3s ease;"></div>
-          <div class="neuron" style="width: 40px; height: 40px; border-radius: 50%; background-color: #ccc; transition: all 0.3s ease;"></div>
-        </div>
-      </div>
-      
-      <!-- Hidden layers -->
-      <div class="network-layer" style="display: flex; flex-direction: column; align-items: center; margin: 0 40px;">
-        <div style="font-weight: bold; margin-bottom: 10px;">Hidden Layer</div>
-        <div style="display: flex; flex-direction: column; gap: 15px;">
-          <div class="neuron" style="width: 40px; height: 40px; border-radius: 50%; background-color: #ccc; transition: all 0.3s ease;"></div>
-          <div class="neuron" style="width: 40px; height: 40px; border-radius: 50%; background-color: #ccc; transition: all 0.3s ease;"></div>
-          <div class="neuron" style="width: 40px; height: 40px; border-radius: 50%; background-color: #ccc; transition: all 0.3s ease;"></div>
-          <div class="neuron" style="width: 40px; height: 40px; border-radius: 50%; background-color: #ccc; transition: all 0.3s ease;"></div>
-        </div>
-      </div>
-      
-      <div class="network-layer" style="display: flex; flex-direction: column; align-items: center; margin: 0 40px;">
-        <div style="font-weight: bold; margin-bottom: 10px;">Hidden Layer</div>
-        <div style="display: flex; flex-direction: column; gap: 15px;">
-          <div class="neuron" style="width: 40px; height: 40px; border-radius: 50%; background-color: #ccc; transition: all 0.3s ease;"></div>
-          <div class="neuron" style="width: 40px; height: 40px; border-radius: 50%; background-color: #ccc; transition: all 0.3s ease;"></div>
-          <div class="neuron" style="width: 40px; height: 40px; border-radius: 50%; background-color: #ccc; transition: all 0.3s ease;"></div>
-        </div>
-      </div>
-      
-      <!-- Output layer -->
-      <div class="network-layer" style="display: flex; flex-direction: column; align-items: center;">
-        <div style="font-weight: bold; margin-bottom: 10px;">Output</div>
-        <div style="display: flex; flex-direction: column; gap: 15px;">
-          <div class="neuron output-neuron" style="width: 40px; height: 40px; border-radius: 50%; background-color: #ccc; transition: all 0.3s ease;"></div>
-          <div class="neuron output-neuron" style="width: 40px; height: 40px; border-radius: 50%; background-color: #ccc; transition: all 0.3s ease;"></div>
-        </div>
-      </div>
-    </div>
-    
-    <div style="text-align: center; margin-top: 10px;">
-      <button id="activate-network" style="padding: 8px 16px; background-color: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;">Activate Network</button>
-    </div>
-    
-    <figcaption style="margin-top: 20px; text-align: center;">
-      <p>This interactive neural network visualization uses regular width. Click the "Activate Network" button to see a simplified representation of neural activity propagation through the network.</p>
+      <p>The Language Server Protocol architecture enables AI tools to interact with various IDEs through a standardized interface.</p>
     </figcaption>
   </figure>
 
-  <h2 id="conclusion">Conclusion: How did the project create impact?</h2>
+  <h2 id="github-copilot">GitHub Copilot</h2>
 
-  <p>Conclusion on the project contributions</p>
+  <p>GitHub Copilot represents one of the most widely adopted AI pair programming tools, using large language models to suggest code completions based on context. Trained on billions of lines of public code, Copilot can generate everything from simple functions to complex algorithms.</p>
+
+  <figure style="text-align: center; margin: 30px auto;">
+    <img src="./diagrams/copilot.gif" alt="GitHub Copilot in action" style="width: 100%; max-width: 700px; margin: 0 auto;">
+    <figcaption style="margin-top: 10px; text-align: center; max-width: 700px; margin-left: auto; margin-right: auto;">
+      <p>GitHub Copilot suggests code completions in real-time as developers type, offering context-aware recommendations that can significantly speed up development.</p>
+    </figcaption>
+  </figure>
+
+  <h2 id="agentic-coding-assistants">Agentic Coding Assistants</h2>
+
+  <p>The latest evolution in AI-assisted development are agentic coding assistants that can take on more complex, multi-step programming tasks. Unlike simple code completion tools, these agents can reason about codebases, plan solutions, and execute multiple actions to solve problems.</p>
+
+
+  <figure style="text-align: center; margin: 30px auto;">
+    <img src="./diagrams/agent.svg" alt="Agentic Software Engineering Assistant" style="width: 100%; max-width: 700px; margin: 0 auto;">
+    <figcaption style="margin-top: 10px; text-align: center; max-width: 700px; margin-left: auto; margin-right: auto;">
+      <p>Agentic coding assistants can understand complex requirements, plan solutions, and execute code changes across multiple files while maintaining context.</p>
+    </figcaption>
+  </figure>
+
+
+  <figure style="text-align: center; margin: 30px auto;">
+    <img src="./diagrams/swe-agent.png" alt="Agentic Software Engineering Assistant" style="width: 100%; max-width: 700px; margin: 0 auto;">
+    <figcaption style="margin-top: 10px; text-align: center; max-width: 700px; margin-left: auto; margin-right: auto;">
+      <p>Agentic coding assistants can understand complex requirements, plan solutions, and execute code changes across multiple files while maintaining context.</p>
+    </figcaption>
+  </figure>
+
+  <h2 id="conclusion">Conclusion</h2>
+
+  <p>The rapid evolution of AI-assisted software engineering tools is transforming how developers work. From language servers providing foundational capabilities to agentic assistants that can handle complex tasks, these technologies are reshaping productivity, code quality, and the developer experience.</p>
 </d-article>
 
 <d-appendix>
