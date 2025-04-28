@@ -90,7 +90,7 @@
     <li>Refactoring suggestions</li>
   </ul>
 
-  <p>For example, when you type <code>document.</code> in JavaScript, the editor sends this context to the JavaScript language server, which responds with a list of valid methods and properties that can follow. This all happens through standardized JSON-RPC messages defined by the LSP specification.</p>
+  <p>For example, when you type <code><span style="color: #ff5722; font-weight: bold;">document.</span></code> in JavaScript, the editor sends this context to the JavaScript language server, which responds with a list of valid methods and properties that can follow. This all happens through standardized JSON-RPC messages defined by the LSP specification.</p>
 
   <figure class="l-screen" style="width: 100%; margin: 30px 0; padding: 0;">
     <div id="lsp-diagram" style="width: 100%; height: 420px; margin: 0 auto; background-color: transparent; border-radius: 8px; position: relative; overflow: hidden; border: 1px solid #e5e5e5; box-shadow: 0 0 20px rgba(0,0,0,0.05);">
@@ -213,6 +213,204 @@
     </figcaption>
   </figure>
   
+  <p>Another important LSP feature is semantic token highlighting, which enables editors to provide consistent, language-aware syntax highlighting.</p>
+
+  <figure class="l-screen" style="width: 100%; margin: 30px 0; padding: 0;">
+    <div id="semantic-tokens-diagram" style="width: 100%; height: 450px; margin: 0 auto; background-color: transparent; border-radius: 8px; position: relative; overflow: hidden; border: 1px solid #e5e5e5; box-shadow: 0 0 20px rgba(0,0,0,0.05);">
+      <svg width="100%" height="100%" viewBox="0 0 1000 450" xmlns="http://www.w3.org/2000/svg">
+        <!-- Style definitions -->
+        <defs>
+          <style>
+            @keyframes blink {
+              0%, 100% { opacity: 1; }
+              50% { opacity: 0; }
+            }
+            @keyframes flow {
+              0% { stroke-dashoffset: 24; }
+              100% { stroke-dashoffset: 0; }
+            }
+            @keyframes typewriter {
+              0% { opacity: 0; }
+              10% { opacity: 1; }
+              80% { opacity: 1; }
+              90% { opacity: 0; }
+              100% { opacity: 0; }
+            }
+            @keyframes cursorMove {
+              0% { transform: translateX(0); transform: translateY(0); }
+              20% { transform: translateX(280px); transform: translateY(0); }
+              25% { transform: translateX(0); transform: translateY(20px); }
+              40% { transform: translateX(150px); transform: translateY(20px); }
+              45% { transform: translateX(0); transform: translateY(40px); }
+              60% { transform: translateX(200px); transform: translateY(40px); }
+              65% { transform: translateX(0); transform: translateY(60px); }
+              80% { transform: translateX(220px); transform: translateY(60px); }
+              85% { transform: translateX(0); transform: translateY(80px); }
+              100% { transform: translateX(280px); transform: translateY(80px); }
+            }
+            @keyframes requestAnimation {
+              0%, 90%, 100% { opacity: 0; }
+              20%, 70% { opacity: 1; }
+            }
+            @keyframes responseAnimation {
+              0%, 40%, 100% { opacity: 0; }
+              60%, 80% { opacity: 1; }
+            }
+            
+            .animated-arrow {
+              stroke-dasharray: 6 4;
+              animation: flow 1.5s linear infinite;
+            }
+            .cursor {
+              animation: blink 1s step-start infinite, cursorMove 8s step-end infinite;
+            }
+            .active {
+              animation: flow 1.5s linear infinite;
+            }
+            .keyword { fill: #0000FF !important; }
+            .function-name { fill: #795E26 !important; }
+            .variable { fill: #1a1a1a !important; }
+            .number { fill: #098658 !important; }
+            .operator { fill: #800080 !important; }
+            .string { fill: #A31515 !important; }
+            .mono-text { font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace; }
+            
+            #request-arrow {
+              animation: requestAnimation 8s infinite;
+            }
+            #response-arrow {
+              animation: responseAnimation 8s infinite;
+            }
+            
+            .typing-animation {
+              opacity: 0;
+              animation: typewriter 8s forwards infinite;
+            }
+            .char1 { animation-delay: 0.2s; }
+            .char2 { animation-delay: 0.4s; }
+            .char3 { animation-delay: 0.6s; }
+            .char4 { animation-delay: 0.8s; }
+            .char5 { animation-delay: 1.0s; }
+            .char6 { animation-delay: 1.2s; }
+            .char7 { animation-delay: 1.4s; }
+            .char8 { animation-delay: 1.6s; }
+            .char9 { animation-delay: 1.8s; }
+            .char10 { animation-delay: 2.0s; }
+            .char11 { animation-delay: 2.2s; }
+            .char12 { animation-delay: 2.4s; }
+            .char13 { animation-delay: 2.6s; }
+            .char14 { animation-delay: 2.8s; }
+            .char15 { animation-delay: 3.0s; }
+            .char16 { animation-delay: 3.2s; }
+            .char17 { animation-delay: 3.4s; }
+            .char18 { animation-delay: 3.6s; }
+            .char19 { animation-delay: 3.8s; }
+            .char20 { animation-delay: 4.0s; }
+            .char21 { animation-delay: 4.2s; }
+            .char22 { animation-delay: 4.4s; }
+            .char23 { animation-delay: 4.6s; }
+            .char24 { animation-delay: 4.8s; }
+            .char25 { animation-delay: 5.0s; }
+            .char26 { animation-delay: 5.2s; }
+            .char27 { animation-delay: 5.4s; }
+            .char28 { animation-delay: 5.6s; }
+            .char29 { animation-delay: 5.8s; }
+            .char30 { animation-delay: 6.0s; }
+          </style>
+          
+          <!-- Arrow markers -->
+          <marker id="request-arrow-marker" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#2b7cb3" />
+          </marker>
+          <marker id="response-arrow-marker" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#198754" />
+          </marker>
+        </defs>
+
+        <!-- Editor Box -->
+        <rect x="40" y="40" width="360" height="360" rx="6" fill="#ffffff" stroke="#d1d1d1" stroke-width="2" />
+        <text x="220" y="25" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto" font-size="16" font-weight="bold" fill="#333">Code Editor</text>
+        
+        <!-- Editor title bar -->
+        <rect x="40" y="40" width="360" height="30" rx="6 6 0 0" fill="#f3f3f3" stroke="#d1d1d1" stroke-width="1" />
+        <text x="60" y="60" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#333">example.py</text>
+        
+        <!-- Code area with syntax highlighting -->
+        <rect x="40" y="70" width="360" height="330" fill="#ffffff" />
+        
+        <!-- Code text with pre-defined animation -->
+        <text id="code-text" x="40" y="100" class="mono-text" font-size="14" fill="#000000">
+          <!-- Line-by-line animation with proper indentation -->
+          <tspan x="60" dy="0" class="typing-animation" style="animation-delay: 0.2s">
+            <tspan class="keyword">def</tspan> <tspan class="function-name">calculate_average</tspan>(<tspan class="variable">numbers</tspan>):
+          </tspan>
+          <tspan x="60" dy="20" class="typing-animation" style="animation-delay: 1.5s">
+            <tspan dx="30">    <tspan class="variable">total</tspan> <tspan class="operator">=</tspan> <tspan class="number">0</tspan></tspan>
+          </tspan>
+          <tspan x="60" dy="20" class="typing-animation" style="animation-delay: 2.5s">
+            <tspan dx="30">    <tspan class="keyword">for</tspan> <tspan class="variable">num</tspan> <tspan class="keyword">in</tspan> <tspan class="variable">numbers</tspan>:</tspan>
+          </tspan>
+          <tspan x="60" dy="20" class="typing-animation" style="animation-delay: 3.5s">
+            <tspan dx="60">        <tspan class="variable">total</tspan> <tspan class="operator">+=</tspan> <tspan class="variable">num</tspan></tspan>
+          </tspan>
+          <tspan x="60" dy="20" class="typing-animation" style="animation-delay: 4.5s">
+            <tspan dx="30">    <tspan class="keyword">return</tspan> <tspan class="variable">total</tspan> <tspan class="operator">/</tspan> <tspan class="keyword">len</tspan>(<tspan class="variable">numbers</tspan>)</tspan>
+          </tspan>
+        </text>
+        
+        <!-- No typing cursor -->
+        
+        <!-- Server Box -->
+        <rect x="600" y="40" width="360" height="360" rx="6" fill="#ffffff" stroke="#d1d1d1" stroke-width="2" />
+        <text x="780" y="25" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto" font-size="16" font-weight="bold" fill="#333">Language Server</text>
+        
+        <!-- Server title bar -->
+        <rect x="600" y="40" width="360" height="30" rx="6 6 0 0" fill="#f3f3f3" stroke="#d1d1d1" stroke-width="1" />
+        <text x="620" y="60" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#333">Python Language Server</text>
+        
+        <!-- Server content area -->
+        <rect x="600" y="70" width="360" height="330" fill="#f8f9fa" />
+        
+        <!-- Server content -->
+        <text x="620" y="100" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="bold" fill="#333">semanticTokens Request Handler</text>
+        
+        <!-- JSON response -->
+        <rect x="620" y="120" width="320" height="220" rx="4" fill="#f1f1f1" stroke="#d1d1d1" />
+        <text id="server-response-data" x="630" y="140" class="mono-text" font-size="9" fill="#000">
+          <tspan x="630" dy="0" class="typing-animation" style="animation-delay: 3.0s">{</tspan>
+          <tspan x="640" dy="14" class="typing-animation" style="animation-delay: 3.1s">  "data": [</tspan>
+          <tspan x="650" dy="14" class="typing-animation" style="animation-delay: 3.2s">    {</tspan>
+          <tspan x="660" dy="14" class="typing-animation" style="animation-delay: 3.3s">      "line": 0, "character": 0,</tspan>
+          <tspan x="660" dy="14" class="typing-animation" style="animation-delay: 3.4s">      "length": 3, "tokenType": "keyword"</tspan>
+          <tspan x="650" dy="14" class="typing-animation" style="animation-delay: 3.5s">    },</tspan>
+          <tspan x="650" dy="14" class="typing-animation" style="animation-delay: 3.6s">    {</tspan>
+          <tspan x="660" dy="14" class="typing-animation" style="animation-delay: 3.7s">      "line": 0, "character": 4,</tspan>
+          <tspan x="660" dy="14" class="typing-animation" style="animation-delay: 3.8s">      "length": 17, "tokenType": "function",</tspan>
+          <tspan x="660" dy="14" class="typing-animation" style="animation-delay: 3.9s">      "tokenModifiers": ["declaration"]</tspan>
+          <tspan x="650" dy="14" class="typing-animation" style="animation-delay: 4.0s">    },</tspan>
+          <tspan x="650" dy="14" class="typing-animation" style="animation-delay: 4.1s">    ...</tspan>
+          <tspan x="640" dy="14" class="typing-animation" style="animation-delay: 4.2s">  ],</tspan>
+          <tspan x="640" dy="14" class="typing-animation" style="animation-delay: 4.3s">  "resultId": "semanticTokens-123"</tspan>
+          <tspan x="630" dy="14" class="typing-animation" style="animation-delay: 4.4s">}</tspan>
+        </text>
+        
+        <!-- Communication arrows -->
+        <text x="500" y="155" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="bold" fill="#2b7cb3">semanticTokens Request</text>
+        <line id="request-arrow" x1="410" y1="170" x2="590" y2="170" stroke="#2b7cb3" stroke-width="2" class="animated-arrow" marker-end="url(#request-arrow-marker)" />
+        
+        <text x="500" y="235" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="bold" fill="#198754">Token Data Response</text>
+        <line id="response-arrow" x1="590" y1="250" x2="410" y2="250" stroke="#198754" stroke-width="2" class="animated-arrow" marker-end="url(#response-arrow-marker)" />
+        
+        <!-- LSP label -->
+        <rect x="465" y="280" width="70" height="30" rx="15" fill="#ffffff" stroke="#5c98d2" stroke-width="1.5" />
+        <text x="500" y="300" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="bold" fill="#0078d4">LSP</text>
+      </svg>
+    </div>
+    <figcaption style="margin-top: 20px; text-align: left; max-width: 1000px; margin-left: auto; margin-right: auto;">
+      <p>As you type Python code in the editor, the language server provides semantic token information that enables the editor to consistently highlight syntax elements like keywords, function names, and variables. This creates a consistent experience across any LSP-compatible editor.</p>
+    </figcaption>
+  </figure>
+  
   <p>This architecture has revolutionized developer tools by enabling:</p>
   
   <ul>
@@ -231,6 +429,13 @@
     <img src="./diagrams/copilot.gif" alt="GitHub Copilot in action" style="width: 100%; max-width: 700px; margin: 0 auto;">
     <figcaption style="margin-top: 10px; text-align: center; max-width: 700px; margin-left: auto; margin-right: auto;">
       <p>GitHub Copilot suggests code completions in real-time as developers type, offering context-aware recommendations that can significantly speed up development.</p>
+    </figcaption>
+  </figure>
+
+  <figure style="text-align: center; margin: 30px auto;">
+    <img src="./diagrams/copilot_pr.png" alt="GitHub Copilot reviewing a pull request" style="width: 100%; max-width: 700px; margin: 0 auto;">
+    <figcaption style="margin-top: 10px; text-align: center; max-width: 700px; margin-left: auto; margin-right: auto;">
+      <p>GitHub Copilot reviewing a PR and making a code suggestion to fix an issue.</p>
     </figcaption>
   </figure>
 
@@ -254,9 +459,124 @@
     </figcaption>
   </figure>
 
+  <h3>Popular Agentic Coding Assistants</h3>
+
+  <p>The ecosystem of agentic coding assistants has grown rapidly, with tools broadly divided into two categories: IDE-integrated and terminal-based solutions. Each offers different levels of autonomy, context handling, and user experience.</p>
+
+  <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+    <div style="width: 48%;">
+      <h4>IDE-Based Tools</h4>
+      <p>These assistants integrate directly into development environments, offering seamless coding experiences with visual feedback and intuitive interfaces.</p>
+      <ul>
+        <li><strong>Cursor</strong> - A dedicated IDE with fully autonomous coding capabilities<d-cite key="cursor" /></li>
+        <li><strong>VS Code Copilot Agent Mode</strong> - Built into VS Code with natural language task definition<d-cite key="vscodeagent" /></li>
+      </ul>
+    </div>
+    <div style="width: 48%;">
+      <h4>Terminal-Based Tools</h4>
+      <p>Command-line tools offer power users flexibility, scriptability, and integration with existing terminal workflows.</p>
+      <ul>
+        <li><strong>Claude Code</strong> - Feature rich CLI tool with scriptable agents<d-cite key="claudecode"/></li>
+        <li><strong>OpenAI Codex CLI</strong> - Early stage effort with open-source foundations<d-cite key="codex" /></li>
+      </ul>
+    </div>
+  </div>
+
+  <figure style="margin: 30px auto;">
+    <div style="overflow-x: auto;">
+      <table style="width: 100%; border-collapse: collapse; border: 1px solid #e0e0e0; font-size: 14px; margin-bottom: 20px;">
+        <thead>
+          <tr style="background-color: #f5f5f5;">
+            <th style="padding: 12px 15px; text-align: left; border-bottom: 2px solid #ddd; border-right: 1px solid #ddd;">Feature</th>
+            <th style="padding: 12px 15px; text-align: left; border-bottom: 2px solid #ddd; border-right: 1px solid #ddd; background-color: #f0f7ff;">Claude Code</th>
+            <th style="padding: 12px 15px; text-align: left; border-bottom: 2px solid #ddd; border-right: 1px solid #ddd; background-color: #f0fff7;">OpenAI Codex CLI</th>
+            <th style="padding: 12px 15px; text-align: left; border-bottom: 2px solid #ddd; border-right: 1px solid #ddd; background-color: #f7f0ff;">Cursor</th>
+            <th style="padding: 12px 15px; text-align: left; border-bottom: 2px solid #ddd; background-color: #fff0f7;">VS Code Copilot Agent</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding: 10px 15px; border-bottom: 1px solid #ddd; border-right: 1px solid #ddd; font-weight: bold;">Interface</td>
+            <td style="padding: 10px 15px; border-bottom: 1px solid #ddd; border-right: 1px solid #ddd; background-color: #f8fbff;">Command line</td>
+            <td style="padding: 10px 15px; border-bottom: 1px solid #ddd; border-right: 1px solid #ddd; background-color: #f8fff8;">Command line</td>
+            <td style="padding: 10px 15px; border-bottom: 1px solid #ddd; border-right: 1px solid #ddd; background-color: #faf8ff;">IDE (Cursor IDE)</td>
+            <td style="padding: 10px 15px; border-bottom: 1px solid #ddd; background-color: #fff8fa;">IDE (VS Code)</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px 15px; border-bottom: 1px solid #ddd; border-right: 1px solid #ddd; font-weight: bold;">Autonomy</td>
+            <td style="padding: 10px 15px; border-bottom: 1px solid #ddd; border-right: 1px solid #ddd; background-color: #f8fbff;">Highly agentic, customizable</td>
+            <td style="padding: 10px 15px; border-bottom: 1px solid #ddd; border-right: 1px solid #ddd; background-color: #f8fff8;">Adjustable (3 approval modes)</td>
+            <td style="padding: 10px 15px; border-bottom: 1px solid #ddd; border-right: 1px solid #ddd; background-color: #faf8ff;">Fully autonomous (default mode)</td>
+            <td style="padding: 10px 15px; border-bottom: 1px solid #ddd; background-color: #fff8fa;">Autonomous with user review</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px 15px; border-bottom: 1px solid #ddd; border-right: 1px solid #ddd; font-weight: bold;">Context Handling</td>
+            <td style="padding: 10px 15px; border-bottom: 1px solid #ddd; border-right: 1px solid #ddd; background-color: #f8fbff;">Pulls context, uses CLAUDE.md file</td>
+            <td style="padding: 10px 15px; border-bottom: 1px solid #ddd; border-right: 1px solid #ddd; background-color: #f8fff8;">Multimodal (text, screenshots)</td>
+            <td style="padding: 10px 15px; border-bottom: 1px solid #ddd; border-right: 1px solid #ddd; background-color: #faf8ff;">Explores codebase, reads docs/web</td>
+            <td style="padding: 10px 15px; border-bottom: 1px solid #ddd; background-color: #fff8fa;">Determines relevant files/context</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px 15px; border-bottom: 1px solid #ddd; border-right: 1px solid #ddd; font-weight: bold;">Tool Integration</td>
+            <td style="padding: 10px 15px; border-bottom: 1px solid #ddd; border-right: 1px solid #ddd; background-color: #f8fbff;">CLI tools, bash, web-fetch. MCP support.</td>
+            <td style="padding: 10px 15px; border-bottom: 1px solid #ddd; border-right: 1px solid #ddd; background-color: #f8fff8;">CLI tools, runs code, file ops</td>
+            <td style="padding: 10px 15px; border-bottom: 1px solid #ddd; border-right: 1px solid #ddd; background-color: #faf8ff;">Full tool access, terminal commands</td>
+            <td style="padding: 10px 15px; border-bottom: 1px solid #ddd; background-color: #fff8fa;">Invokes tools via MCP protocol</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px 15px; border-bottom: 1px solid #ddd; border-right: 1px solid #ddd; font-weight: bold;">Platform Support</td>
+            <td style="padding: 10px 15px; border-bottom: 1px solid #ddd; border-right: 1px solid #ddd; background-color: #f8fbff;">Cross-platform (CLI)</td>
+            <td style="padding: 10px 15px; border-bottom: 1px solid #ddd; border-right: 1px solid #ddd; background-color: #f8fff8;">macOS/Linux (Windows via WSL)</td>
+            <td style="padding: 10px 15px; border-bottom: 1px solid #ddd; border-right: 1px solid #ddd; background-color: #faf8ff;">Cross-platform (IDE)</td>
+            <td style="padding: 10px 15px; border-bottom: 1px solid #ddd; background-color: #fff8fa;">Cross-platform (VS Code)</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px 15px; border-bottom: 1px solid #ddd; border-right: 1px solid #ddd; font-weight: bold;">Best For</td>
+            <td style="padding: 10px 15px; border-bottom: 1px solid #ddd; border-right: 1px solid #ddd; background-color: #f8fbff;">Power users, researchers</td>
+            <td style="padding: 10px 15px; border-bottom: 1px solid #ddd; border-right: 1px solid #ddd; background-color: #f8fff8;">Programmers wanting CLI agents</td>
+            <td style="padding: 10px 15px; border-bottom: 1px solid #ddd; border-right: 1px solid #ddd; background-color: #faf8ff;">Developers seeking smooth UX</td>
+            <td style="padding: 10px 15px; border-bottom: 1px solid #ddd; background-color: #fff8fa;">VS Code users, Copilot subscribers</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px 15px; border-right: 1px solid #ddd; font-weight: bold;">Current Maturity</td>
+            <td style="padding: 10px 15px; border-right: 1px solid #ddd; background-color: #f8fbff;">
+              <div style="position: relative; height: 20px; background-color: #e9ecef; border-radius: 4px; overflow: hidden;">
+                <div style="position: absolute; width: 80%; height: 100%; background-color: #4582ec; border-radius: 4px;"></div>
+                <div style="position: relative; text-align: center; color: #212529; font-weight: bold; line-height: 20px; font-size: 12px;">4 / 5</div>
+              </div>
+            </td>
+            <td style="padding: 10px 15px; border-right: 1px solid #ddd; background-color: #f8fff8;">
+              <div style="position: relative; height: 20px; background-color: #e9ecef; border-radius: 4px; overflow: hidden;">
+                <div style="position: absolute; width: 30%; height: 100%; background-color: #f0ad4e; border-radius: 4px;"></div>
+                <div style="position: relative; text-align: center; color: #212529; font-weight: bold; line-height: 20px; font-size: 12px;">1.5 / 5</div>
+              </div>
+            </td>
+            <td style="padding: 10px 15px; border-right: 1px solid #ddd; background-color: #faf8ff;">
+              <div style="position: relative; height: 20px; background-color: #e9ecef; border-radius: 4px; overflow: hidden;">
+                <div style="position: absolute; width: 80%; height: 100%; background-color: #4582ec; border-radius: 4px;"></div>
+                <div style="position: relative; text-align: center; color: #212529; font-weight: bold; line-height: 20px; font-size: 12px;">4 / 5</div>
+              </div>
+            </td>
+            <td style="padding: 10px 15px; background-color: #fff8fa;">
+              <div style="position: relative; height: 20px; background-color: #e9ecef; border-radius: 4px; overflow: hidden;">
+                <div style="position: absolute; width: 80%; height: 100%; background-color: #4582ec; border-radius: 4px;"></div>
+                <div style="position: relative; text-align: center; color: #212529; font-weight: bold; line-height: 20px; font-size: 12px;">4 / 5</div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <figcaption style="margin-top: 10px; text-align: left; max-width: 1000px; margin-left: auto; margin-right: auto;">
+      <p>Comparison of popular agentic coding assistants across key attributes. Each tool offers different trade-offs in terms of interface, autonomy, and specialized features.</p>
+    </figcaption>
+  </figure>
+
+  <p>These tools are rapidly evolving with improvements in context handling, tool integration, and user experience. The choice between IDE-integrated and terminal-based tools often depends on developer workflow preferences, with IDE tools offering more visual feedback and terminal tools providing greater flexibility and customization.</p>
+
   <h2 id="conclusion">Conclusion</h2>
 
-  <p>The rapid evolution of AI-assisted software engineering tools is transforming how developers work. From language servers providing foundational capabilities to agentic assistants that can handle complex tasks, these technologies are reshaping productivity, code quality, and the developer experience.</p>
+  <p>AI-assisted software coding tools are transforming how developers work. Agentic assistants can handle complex tasks, and are reshaping productivity, code quality, and the developer experience. Evaluation of these tools on standardized benchmarks is lacking due to the pace of development. Feedback from users on forums like reddit reveal that these products rapdily change in terms of relibility, hence need to be used with caution.</p>
 </d-article>
 
 <d-appendix>
