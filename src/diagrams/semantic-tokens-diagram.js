@@ -1,9 +1,9 @@
 /**
  * Semantic Tokens LSP Diagram
- * 
+ *
  * This module implements an interactive animation showing how LSP semantic tokens
  * are used to provide syntax highlighting in an editor.
- * 
+ *
  * Note: All animation is handled via CSS in the SVG element directly with
  * continuous looping.
  */
