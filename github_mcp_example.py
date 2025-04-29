@@ -7,6 +7,7 @@ import base64
 import json
 import subprocess
 import uuid
+from typing import Optional
 
 from rich.console import Console
 from rich.panel import Panel
@@ -19,12 +20,17 @@ from rich.table import Table
 console = Console()
 
 
-def header(text):
+def header(text: str) -> None:
     """Display a header with nice formatting."""
     console.print(Panel(f"[bold blue]{text}[/]", border_style="blue"))
 
 
-def run_mcp_command(method, params=None, show_request=True, show_raw_response=False):
+def run_mcp_command(
+    method: str,
+    params: Optional[dict[str, str]] = None,
+    show_request: bool = False,
+    show_raw_response: bool = False,
+) -> Optional[list[dict[str, str]]]:
     """Run command directly against the MCP server via stdio."""
     request = {"jsonrpc": "2.0", "id": str(uuid.uuid4()), "method": method}
 

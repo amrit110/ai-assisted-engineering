@@ -224,7 +224,7 @@
 
   <figure class="l-screen" style="width: 100%; margin: 30px 0; padding: 0;">
     <div id="semantic-tokens-diagram" style="width: 100%; height: 450px; margin: 0 auto; background-color: transparent; border-radius: 8px; position: relative; overflow: hidden; border: 1px solid #e5e5e5; box-shadow: 0 0 20px rgba(0,0,0,0.05);">
-      <svg width="100%" height="100%" viewBox="0 0 1000 450" xmlns="http://www.w3.org/2000/svg">
+      <svg width="100%" height="100%" viewBox="0 0 1000 450" xmlns="http://www.w3.org/2000/svg" xml:space="preserve">
         <!-- Style definitions -->
         <defs>
           <style>
@@ -280,7 +280,13 @@
             .number { fill: #098658 !important; }
             .operator { fill: #800080 !important; }
             .string { fill: #A31515 !important; }
-            .mono-text { font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace; }
+            .mono-text {
+              font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+              white-space: pre;
+            }
+            text, tspan {
+              white-space: pre;
+            }
 
             #request-arrow {
               animation: requestAnimation 8s infinite;
@@ -348,20 +354,20 @@
         <!-- Code text with pre-defined animation -->
         <text id="code-text" x="40" y="100" class="mono-text" font-size="14" fill="#000000">
           <!-- Line-by-line animation with proper indentation -->
-          <tspan x="60" dy="0" class="typing-animation" style="animation-delay: 0.2s">
-            <tspan class="keyword">def</tspan> <tspan class="function-name">calculate_average</tspan>(<tspan class="variable">numbers</tspan>):
+          <tspan x="-40" dy="0" class="typing-animation" style="animation-delay: 0.2s" xml:space="preserve">
+            <tspan class="keyword">def</tspan><tspan> </tspan><tspan class="function-name">calculate_average</tspan>(<tspan class="variable">numbers</tspan>):
           </tspan>
-          <tspan x="60" dy="20" class="typing-animation" style="animation-delay: 1.5s">
-            <tspan x="90" class="variable">total</tspan> <tspan class="operator">=</tspan> <tspan class="number">0</tspan>
+          <tspan x="60" dy="20" class="typing-animation" style="animation-delay: 1.5s" xml:space="preserve">
+            <tspan x="90" class="variable">total</tspan><tspan> </tspan><tspan class="operator">=</tspan><tspan> </tspan><tspan class="number">0</tspan>
           </tspan>
-          <tspan x="60" dy="20" class="typing-animation" style="animation-delay: 2.5s">
-            <tspan x="90" class="keyword">for</tspan> <tspan class="variable">num</tspan> <tspan class="keyword">in</tspan> <tspan class="variable">numbers</tspan>:
+          <tspan x="60" dy="20" class="typing-animation" style="animation-delay: 2.5s" xml:space="preserve">
+            <tspan x="90" class="keyword">for</tspan><tspan> </tspan><tspan class="variable">num</tspan><tspan> </tspan><tspan class="keyword">in</tspan><tspan> </tspan><tspan class="variable">numbers</tspan>:
           </tspan>
-          <tspan x="60" dy="20" class="typing-animation" style="animation-delay: 3.5s">
-            <tspan x="120" class="variable">total</tspan> <tspan class="operator">+=</tspan> <tspan class="variable">num</tspan>
+          <tspan x="60" dy="20" class="typing-animation" style="animation-delay: 3.5s" xml:space="preserve">
+            <tspan x="120" class="variable">total</tspan><tspan> </tspan><tspan class="operator">+=</tspan><tspan> </tspan><tspan class="variable">num</tspan>
           </tspan>
-          <tspan x="60" dy="20" class="typing-animation" style="animation-delay: 4.5s">
-            <tspan x="90" class="keyword">return</tspan> <tspan class="variable">total</tspan> <tspan class="operator">/</tspan> <tspan class="keyword">len</tspan>(<tspan class="variable">numbers</tspan>)
+          <tspan x="60" dy="20" class="typing-animation" style="animation-delay: 4.5s" xml:space="preserve">
+            <tspan x="90" class="keyword">return</tspan><tspan> </tspan><tspan class="variable">total</tspan><tspan> </tspan><tspan class="operator">/</tspan><tspan> </tspan><tspan class="keyword">len</tspan>(<tspan class="variable">numbers</tspan>)
           </tspan>
         </text>
 
@@ -383,21 +389,21 @@
 
         <!-- JSON response -->
         <rect x="620" y="120" width="320" height="220" rx="4" fill="#f1f1f1" stroke="#d1d1d1" />
-        <text id="server-response-data" x="630" y="140" class="mono-text" font-size="9" fill="#000">
+        <text id="server-response-data" x="630" y="140" class="mono-text" font-size="9" fill="#000" xml:space="preserve">
           <tspan x="630" dy="0" class="typing-animation" style="animation-delay: 3.0s">{</tspan>
-          <tspan x="640" dy="14" class="typing-animation" style="animation-delay: 3.1s">  "data": [</tspan>
-          <tspan x="650" dy="14" class="typing-animation" style="animation-delay: 3.2s">    {</tspan>
-          <tspan x="660" dy="14" class="typing-animation" style="animation-delay: 3.3s">      "line": 0, "character": 0,</tspan>
-          <tspan x="660" dy="14" class="typing-animation" style="animation-delay: 3.4s">      "length": 3, "tokenType": "keyword"</tspan>
-          <tspan x="650" dy="14" class="typing-animation" style="animation-delay: 3.5s">    },</tspan>
-          <tspan x="650" dy="14" class="typing-animation" style="animation-delay: 3.6s">    {</tspan>
-          <tspan x="660" dy="14" class="typing-animation" style="animation-delay: 3.7s">      "line": 0, "character": 4,</tspan>
-          <tspan x="660" dy="14" class="typing-animation" style="animation-delay: 3.8s">      "length": 17, "tokenType": "function",</tspan>
-          <tspan x="660" dy="14" class="typing-animation" style="animation-delay: 3.9s">      "tokenModifiers": ["declaration"]</tspan>
-          <tspan x="650" dy="14" class="typing-animation" style="animation-delay: 4.0s">    },</tspan>
-          <tspan x="650" dy="14" class="typing-animation" style="animation-delay: 4.1s">    ...</tspan>
-          <tspan x="640" dy="14" class="typing-animation" style="animation-delay: 4.2s">  ],</tspan>
-          <tspan x="640" dy="14" class="typing-animation" style="animation-delay: 4.3s">  "resultId": "semanticTokens-123"</tspan>
+          <tspan x="640" dy="14" class="typing-animation" style="animation-delay: 3.1s" xml:space="preserve">  "data": [</tspan>
+          <tspan x="650" dy="14" class="typing-animation" style="animation-delay: 3.2s" xml:space="preserve">    {</tspan>
+          <tspan x="660" dy="14" class="typing-animation" style="animation-delay: 3.3s" xml:space="preserve">      "line": 0, "character": 0,</tspan>
+          <tspan x="660" dy="14" class="typing-animation" style="animation-delay: 3.4s" xml:space="preserve">      "length": 3, "tokenType": "keyword"</tspan>
+          <tspan x="650" dy="14" class="typing-animation" style="animation-delay: 3.5s" xml:space="preserve">    },</tspan>
+          <tspan x="650" dy="14" class="typing-animation" style="animation-delay: 3.6s" xml:space="preserve">    {</tspan>
+          <tspan x="660" dy="14" class="typing-animation" style="animation-delay: 3.7s" xml:space="preserve">      "line": 0, "character": 4,</tspan>
+          <tspan x="660" dy="14" class="typing-animation" style="animation-delay: 3.8s" xml:space="preserve">      "length": 17, "tokenType": "function",</tspan>
+          <tspan x="660" dy="14" class="typing-animation" style="animation-delay: 3.9s" xml:space="preserve">      "tokenModifiers": ["declaration"]</tspan>
+          <tspan x="650" dy="14" class="typing-animation" style="animation-delay: 4.0s" xml:space="preserve">    },</tspan>
+          <tspan x="650" dy="14" class="typing-animation" style="animation-delay: 4.1s" xml:space="preserve">    ...</tspan>
+          <tspan x="640" dy="14" class="typing-animation" style="animation-delay: 4.2s" xml:space="preserve">  ],</tspan>
+          <tspan x="640" dy="14" class="typing-animation" style="animation-delay: 4.3s" xml:space="preserve">  "resultId": "semanticTokens-123"</tspan>
           <tspan x="630" dy="14" class="typing-animation" style="animation-delay: 4.4s">}</tspan>
         </text>
 
