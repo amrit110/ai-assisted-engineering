@@ -5,6 +5,7 @@ const webpack = require("webpack")
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlReplaceWebpackPlugin = require('html-replace-webpack-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
 
 function format_debate(base_indent, name) {
   // Slurp in file and split into lines
@@ -81,6 +82,19 @@ module.exports = {
     filename: "[name].bundle.js",
     chunkFilename: "[name].[id].js"
   },
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new TerserPlugin({
+        terserOptions: {
+          compress: false,
+          format: {
+            beautify: true
+          }
+        }
+      })
+    ]
+  },
   module: {
     rules: [
       {
@@ -112,14 +126,14 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'svg-inline-loader',
         options: {
-          removeSVGTagAttrs: true,
-          removingTagAttrs: ["font-family"]
+          removeSVGTagAttrs: false, // Modified to preserve XML attributes
+          removingTagAttrs: [] // Disabled attribute removal
         }
       },
       {
         test: /\.(png|jpg|jpeg)$/,
         exclude: /node_modules/,
-        loader: 'file',
+        loader: 'file-loader',
         options: {
           outputPath: 'images/'
         }
@@ -130,7 +144,13 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./src/index.ejs",
       filename: "index.html",
-      chunks: ["index"]
+      chunks: ["index"],
+      minify: {
+        collapseWhitespace: false,
+        preserveLineBreaks: true,
+        minifyCSS: false,
+        minifyJS: false
+      }
     }),
     new CopyWebpackPlugin({
       patterns: [
@@ -174,4 +194,4 @@ module.exports = {
     }
   },
   devtool: "inline-source-map"
-}
+};
