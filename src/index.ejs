@@ -64,26 +64,28 @@
       <div class="toc-section"><a href="#github-copilot">GitHub Copilot</a></div>
       <div class="toc-section"><a href="#agentic-coding-assistants">Agentic Coding Assistants</a></div>
       <div class="toc-section"><a href="#conclusion">Conclusion</a></div>
+      <div class="toc-section">Appendix</div>
+      <div class="toc-section" style="margin-left: 15px;"><a href="#github-mcp-demo">GitHub MCP Server Demo</a></div>
     </nav>
     <div class="toc-line"></div>
   </d-contents>
 
   <h2 id="introduction">Introduction</h2>
 
-  <p>AI-assisted software engineering represents a significant paradigm shift in how developers write, test, and maintain code. This blog explores the evolution of AI tools in the software development ecosystem, from simple code completions to sophisticated agentic assistants that can reason about and modify entire codebases.</p>
+  <p>AI-assisted software engineering has transformed how developers write, test, and maintain code. From autocomplete suggestions to fully autonomous agents, these tools are reshaping the development landscape. This blog traces this evolution, examining how today's AI tools can understand context, reason about requirements, and modify entire codebases with minimal human guidance.</p>
 
   <figure style="text-align: center; margin: 30px auto;">
     <img src="./diagrams/ycm.gif" alt="YouCompleteMe" style="width: 100%; max-width: 700px; margin: 0 auto;">
     <figcaption style="margin-top: 10px; text-align: center; max-width: 700px; margin-left: auto; margin-right: auto;">
-      <p>A demo of YouCompleteMe, a fast code completion tool that uses the Language Server Protocol (LSP)<d-cite key="youcompleteme" /></p>
+      <p>Early code intelligence: YouCompleteMe demonstrates language-aware completion using the Language Server Protocol (LSP), a precursor to modern AI coding assistants.<d-cite key="youcompleteme" /></p>
     </figcaption>
   </figure>
 
   <h2 id="language-server-protocols">Language Server Protocols</h2>
 
-  <p>The Language Server Protocol (LSP) is a powerful open standard that defines a communication protocol between code editors or IDEs (the client) and language servers that provide language-specific features. Developed by Microsoft to support Visual Studio Code, LSP has become an industry standard adopted by many editors and IDEs.</p>
+  <p>The Language Server Protocol (LSP) introduced a standardized way for editors and language-specific backends to communicate. Developed by Microsoft for VS Code and now widely adopted, LSP solved a fundamental problem: enabling rich language features without duplicating work across editors and languages.</p>
 
-  <p>At its core, LSP solves a critical problem in the development ecosystem: how to provide rich language features (like code completion, error checking, and refactoring) without having to implement them separately for each editor and each programming language. Instead of requiring each editor to implement language support for every language, LSP creates a standardized way for editors to communicate with language-specific servers.</p>
+  <p>Before LSP, each editor needed custom integrations for every language, creating a combinatorial explosion of implementations. LSP elegantly separates editor concerns from language-specific intelligence, allowing any compliant editor to leverage language servers for features like code completion, diagnostics, and refactoring.</p>
 
   <h3>How LSP Works</h3>
 
@@ -220,7 +222,7 @@
     </figcaption>
   </figure>
 
-  <p>One important LSP feature is semantic token highlighting, which enables editors to provide consistent, language-aware syntax highlighting.</p>
+  <p>One important feature that editors provide is consistent, language-aware syntax highlighting. This feature uses the <code><span style="color: #ff5722; font-weight: bold;">textDocument/semanticTokens</span></code> function that LSPs offer.</p>
 
   <figure class="l-screen" style="width: 100%; margin: 30px 0; padding: 0;">
     <div id="semantic-tokens-diagram" style="width: 100%; height: 450px; margin: 0 auto; background-color: transparent; border-radius: 8px; position: relative; overflow: hidden; border: 1px solid #e5e5e5; box-shadow: 0 0 20px rgba(0,0,0,0.05);">
@@ -452,12 +454,12 @@
 
   <h2 id="github-copilot">GitHub Copilot</h2>
 
-  <p>GitHub Copilot represents one of the most widely adopted AI pair programming tools, using large language models to suggest code completions based on context. Trained on billions of lines of public code, Copilot can generate everything from simple functions to complex algorithms.</p>
+  <p>GitHub Copilot marked a leap forward in AI-assisted coding, introducing the era of LLM-powered pair programming. Trained on billions of lines of public code, Copilot generates context-aware suggestions ranging from simple function completions to entire algorithm implementations, often anticipating a developer's intent before they fully express it.</p>
 
   <figure style="text-align: center; margin: 30px auto;">
     <img src="./diagrams/copilot.gif" alt="GitHub Copilot in action" style="width: 100%; max-width: 700px; margin: 0 auto;">
     <figcaption style="margin-top: 10px; text-align: center; max-width: 700px; margin-left: auto; margin-right: auto;">
-      <p>GitHub Copilot suggests code completions in real-time as developers type, offering context-aware recommendations that can significantly speed up development.</p>
+      <p>GitHub Copilot in action: Real-time, context-aware code suggestions that can dramatically accelerate development workflows and reduce boilerplate coding.</p>
     </figcaption>
   </figure>
 
@@ -470,7 +472,7 @@
 
   <h2 id="agentic-coding-assistants">Agentic Coding Assistants</h2>
 
-  <p>The latest evolution in AI-assisted development are agentic coding assistants that can take on more complex, multi-step programming tasks. Unlike simple code completion tools, these agents can reason about codebases, plan solutions, and execute multiple actions to solve problems.</p>
+  <p>While code completion tools suggest what to write next, agentic assistants represent a fundamental shift in capability. These systems can plan and execute complex multi-step tasks, exploring codebases, formulating solutions, and implementing changes autonomously. They embody a deeper understanding of software engineering processes, capable of reasoning about architecture, debugging complex issues, and adapting to project-specific idioms and patterns.</p>
 
 
   <figure style="text-align: center; margin: 30px auto;">
@@ -601,16 +603,16 @@
     </figcaption>
   </figure>
 
-  <p>These tools are rapidly evolving with improvements in context handling, tool integration, and user experience. The choice between IDE-integrated and terminal-based tools often depends on developer workflow preferences, with IDE tools offering more visual feedback and terminal tools providing greater flexibility and customization.</p>
+  <p>These tools are evolving at a remarkable pace, with each iteration bringing improvements in reasoning, context retention, and tool integration. Your choice between IDE-integrated or terminal-based options typically hinges on workflow preferences – visual feedback and seamless integration versus power-user flexibility and customization potential.</p>
 
   <h3>Model Context Protocol (MCP) Servers</h3>
 
-  <p>MCP is an open protocol that standardizes how applications provide context to LLMs<d-cite key="mcp" />. It allows different applications to communicate with LLMs in a consistent way, making it easier to build and integrate AI features. Does that remind you of something else? ;)</p>
+  <p>Model Context Protocol (MCP) does for LLMs what LSP did for language-specific tools – it standardizes how applications provide context to language models<d-cite key="mcp" />. This open protocol creates a consistent interface between applications and AI models, dramatically simplifying integration and enabling powerful new interaction patterns between tools and models.</p>
 
   <figure style="text-align: center; margin: 30px auto;">
     <img src="./diagrams/mcp.gif" alt="YouCompleteMe" style="width: 100%; max-width: 700px; margin: 0 auto;">
     <figcaption style="margin-top: 10px; text-align: center; max-width: 700px; margin-left: auto; margin-right: auto;">
-      <p>A visual explanation of the Model Context Protocol (MCP) and how it is used to pull context from data sources and applications.<d-cite key="mcpvisual" /></p>
+      <p>MCP bridges applications and AI models: This visualization shows how the protocol enables unified context-gathering from diverse data sources, creating richer AI interactions.<d-cite key="mcpvisual" /></p>
     </figcaption>
   </figure>
 
@@ -630,13 +632,50 @@
   </div>
 
   <p>These tools enable AI assistants to perform tasks like searching for repositories with specific characteristics, analyzing code across multiple repositories, fetching documentation, and interacting with GitHub's collaboration features. This integration creates powerful workflows where AI can help with code discovery, repository exploration, and automated repository management tasks.</p>
+  
+  <p><strong>Want to try it yourself?</strong> There are demo scripts in this repository that make it easy to run the GitHub MCP Server locally and experiment with its capabilities. See the <a href="#github-mcp-demo">GitHub MCP Server Demo</a> section in the appendix for step-by-step instructions.</p>
 
   <h2 id="conclusion">Conclusion</h2>
 
-  <p>AI-assisted software coding tools are transforming how developers work. Agentic assistants can handle complex tasks, and are reshaping productivity, code quality, and the developer experience. Evaluation of these tools on standardized benchmarks is lacking due to the pace of development. Feedback from users on forums like reddit reveal that these products rapdily change in terms of reliability, hence need to be used with caution.</p>
+  <p>AI-assisted coding tools have evolved from simple completion suggestions to sophisticated agents capable of complex software engineering tasks. While these systems are reshaping developer productivity and code quality, their rapid evolution presents challenges. Standardized evaluation benchmarks remain nascent, and real-world reliability varies considerably. As these technologies mature, finding the right balance between automation and human oversight will be key to unlocking their full potential while maintaining code quality and developer agency.</p>
 </d-article>
 
 <d-appendix>
+  <h3 id="github-mcp-demo">GitHub MCP Server Demo</h3>
+
+  <p><a href="https://github.com/amrit110/ai-assisted-engineering">This repository</a> includes scripts to help you run and experiment with the GitHub MCP Server. To get started:</p>
+
+  <h4>Step 1: Deploy the GitHub MCP Server</h4>
+  <p>Run the <code>deploy-github-mcp-server.sh</code> script to start the GitHub MCP Server locally using Docker:</p>
+  <pre><code>chmod +x deploy-github-mcp-server.sh
+./deploy-github-mcp-server.sh</code></pre>
+
+  <p>The first time you run this script, it will create a sample <code>.env</code> file. Edit this file to add your GitHub Personal Access Token, then run the script again.</p>
+
+  <h4>Step 2: Run Example Demos</h4>
+  <p>With the server running, you can use the Python example script to explore GitHub MCP functionality:</p>
+  <pre><code>python github_mcp_example.py --list_demos</code></pre>
+
+  <p>Available demo options include:</p>
+  <ul>
+    <li><code>--display_tools</code>: Show all available GitHub MCP tools</li>
+    <li><code>--search_repos</code>: Search for popular GitHub repositories</li>
+    <li><code>--get_readme</code>: Fetch and display README from a repository</li>
+    <li><code>--list_org_repos</code>: List repositories from a specific organization</li>
+    <li><code>--get_repo_file</code>: Fetch a specific file from a repository</li>
+    <li><code>--run_all</code>: Run all demos in sequence</li>
+  </ul>
+
+  <p>Example usage:</p>
+  <pre><code>python github_mcp_example.py --search_repos</code></pre>
+
+  <h4>Requirements</h4>
+  <ul>
+    <li>Docker installed on your system</li>
+    <li>GitHub Personal Access Token</li>
+    <li>Python with rich library installed (<code>pip install rich</code>)</li>
+  </ul>
+
   <h3 id="acknowledgements">Acknowledgments</h3>
   <p>
     We are grateful to x, y, z, and others for extensive feedback on the article.
