@@ -45,20 +45,21 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
-    - name: Download artifact
-      uses: actions/download-artifact@v4
-      with:
-        name: production-build
-        path: public
-
-    - name: Setup Pages
-      uses: actions/configure-pages@v5
-
-    - name: Upload Pages artifact
-      uses: actions/upload-pages-artifact@v3
-      with:
-        path: public
-
     - name: Deploy to GitHub Pages
       id: deployment
       uses: actions/deploy-pages@v4
+
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: production-build
+          path: public
+
+      - name: Ensure .nojekyll exists
+        run: touch public/.nojekyll
+
+      - name: Deploy to Github pages
+        uses: JamesIves/github-pages-deploy-action@v4.7.3
+        with:
+          branch: gh-pages
+          folder: public
